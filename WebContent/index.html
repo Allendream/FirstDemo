@@ -1,0 +1,95 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>吉它搜索1</title>
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/bootstrap-select.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/select2/4.0.0/css/select2.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+</head>
+ <body>
+				
+<h3 class="text-center" text-color="rgb(210,40,0);">吉他搜索</h3>
+	<form role="form" action="Select" method="post">
+		
+		
+		<select name="builder" class="selectpicker">
+			<option>请选择制造商</option>
+			<optgroup label="制造商">
+				<option value="制造商A">制造商A</option>
+				<option value="制造商B">制造商B</option>
+				<option value="制造商C">制造商C</option>
+			</optgroup>
+		</select>
+		<select name="model" class="selectpicker">
+			<option>请选择吉他型号</option>
+			<optgroup label="吉他型号">
+				<option value="001">001</option>
+				<option value="002">002</option>
+				<option value="003">003</option>
+			</optgroup>
+		</select>
+		<select name="type" class="selectpicker">
+			<option>请选择吉他类型</option>
+			<optgroup label="吉他类型">
+				<option value="电吉他">电吉他</option>
+				<option value="木吉他">木吉他</option>
+				<option value="原声吉他">原声吉他</option>
+			</optgroup>
+		</select>
+		 <input  		type="submit" id="sousuo" value="搜索" size="2px">
+		<button type="reset" class="btn btn-default">重置</button>
+	</form>
+	
+	
+	<br> 
+	<hr></hr>
+	  <br>
+			<h1 align="center">全部产品</h1>
+                <div>
+                 <table class="table" width="100%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#819BBC" bordercolorlight="#FFFFFF">
+                  <tr>
+                    <td height="28"><div align="center">吉他序号</div></td>
+                    <td><div align="center">单价</div></td>
+                    <td><div align="center">制造商</div></td>
+                    <td><div align="center">型号</div></td>
+                    <td><div align="center">类型</div></td>
+                    <td><div align="center">木料</div></td>
+                    
+                  </tr>  
+                  
+                </table>
+				</div>
+				<script type="text/javascript">
+	$(document).ready(function(){
+		$.getJSON("Selectguitar",function(data){
+			$("table tr:gt(0)").remove();
+			var html = "";
+			for (var i=0; i < data.length; i++) {
+				html += "<tr><td>" + data[i].serialNumber+ "</td>";
+				html += "<td>" + data[i].price+ "</td>";
+				html += "<td>" + data[i].builder + "</td>";
+				html += "<td>" + data[i].model "</td>";
+				html += "<td>" + data[i].type + "</td>";
+				html += "<td>" + data[i].backWood + "</td></tr>";
+			}
+			$("table").append(html);		
+		});
+	});
+</script>
+</body>
+</html>
